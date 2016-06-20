@@ -1,629 +1,514 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
 <meta charset="utf-8">
-
-
-
-<style type="text/css">
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px; }
-
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
-
-a {
-  color: #4183C4; }
-a.absent {
-  color: #cc0000; }
-a.anchor {
-  display: block;
-  padding-left: 30px;
-  margin-left: -30px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-  cursor: text;
-  position: relative; }
-
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
-  text-decoration: none; }
-
-h1 tt, h1 code {
-  font-size: inherit; }
-
-h2 tt, h2 code {
-  font-size: inherit; }
-
-h3 tt, h3 code {
-  font-size: inherit; }
-
-h4 tt, h4 code {
-  font-size: inherit; }
-
-h5 tt, h5 code {
-  font-size: inherit; }
-
-h6 tt, h6 code {
-  font-size: inherit; }
-
-h1 {
-  font-size: 28px;
-  color: black; }
-
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
-
-h3 {
-  font-size: 18px; }
-
-h4 {
-  font-size: 16px; }
-
-h5 {
-  font-size: 14px; }
-
-h6 {
-  color: #777777;
-  font-size: 14px; }
-
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 15px 0; }
-
-hr {
-  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
-  border: 0 none;
-  color: #cccccc;
-  height: 4px;
-  padding: 0;
-}
-
-body > h2:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-body > h1:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-  body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0; }
-
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  margin-top: 0; }
-
-li p.first {
-  display: inline-block; }
-li {
-  margin: 0; }
-ul, ol {
-  padding-left: 30px; }
-
-ul :first-child, ol :first-child {
-  margin-top: 0; }
-
-dl {
-  padding: 0; }
-  dl dt {
-    font-size: 14px;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px; }
-    dl dt:first-child {
-      padding: 0; }
-    dl dt > :first-child {
-      margin-top: 0; }
-    dl dt > :last-child {
-      margin-bottom: 0; }
-  dl dd {
-    margin: 0 0 15px;
-    padding: 0 15px; }
-    dl dd > :first-child {
-      margin-top: 0; }
-    dl dd > :last-child {
-      margin-bottom: 0; }
-
-blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
-  color: #777777; }
-  blockquote > :first-child {
-    margin-top: 0; }
-  blockquote > :last-child {
-    margin-bottom: 0; }
-
-table {
-  padding: 0;border-collapse: collapse; }
-  table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0; }
-    table tr:nth-child(2n) {
-      background-color: #f8f8f8; }
-    table tr th {
-      font-weight: bold;
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr td {
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
-      margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
-      margin-bottom: 0; }
-
-img {
-  max-width: 100%; }
-
-span.frame {
-  display: block;
-  overflow: hidden; }
-  span.frame > span {
-    border: 1px solid #dddddd;
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin: 13px 0 0;
-    padding: 7px;
-    width: auto; }
-  span.frame span img {
-    display: block;
-    float: left; }
-  span.frame span span {
-    clear: both;
-    color: #333333;
-    display: block;
-    padding: 5px 0 0; }
-span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-center > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: center; }
-  span.align-center span img {
-    margin: 0 auto;
-    text-align: center; }
-span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px 0 0;
-    text-align: right; }
-  span.align-right span img {
-    margin: 0;
-    text-align: right; }
-span.float-left {
-  display: block;
-  margin-right: 13px;
-  overflow: hidden;
-  float: left; }
-  span.float-left span {
-    margin: 13px 0 0; }
-span.float-right {
-  display: block;
-  margin-left: 13px;
-  overflow: hidden;
-  float: right; }
-  span.float-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: right; }
-
-code, tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px; }
-
-pre code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent; }
-
-.highlight pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-  pre code, pre tt {
-    background-color: transparent;
-    border: none; }
-
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
-}
-* {
-	-webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:0 auto;
-    }
-}
-@media print {
-	table, pre {
-		page-break-inside: avoid;
-	}
-	pre {
-		word-wrap: break-word;
-	}
-}
-</style>
-
-<style type="text/css">
-/**
- * prism.js Coy theme for JavaScript, CoffeeScript, CSS and HTML
- * Based on https://github.com/tshedor/workshop-wp-theme (Example: http://workshop.kansan.com/category/sessions/basics or http://workshop.timshedor.com/category/sessions/basics);
- * @author Tim  Shedor
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-	color: black;
-	background: none;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-	position: relative;
-	margin: .5em 0;
-	-webkit-box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
-	-moz-box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
-	box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
-	border-left: 10px solid #358ccb;
-	background-color: #fdfdfd;
-	background-image: -webkit-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
-	background-image: -moz-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
-	background-image: -ms-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
-	background-image: -o-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
-	background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
-	background-size: 3em 3em;
-	background-origin: content-box;
-	overflow: visible;
-	padding: 0;
-}
-
-code[class*="language"] {
-	max-height: inherit;
-	height: 100%;
-	padding: 0 1em;
-	display: block;
-	overflow: auto;
-}
-
-/* Margin bottom to accomodate shadow */
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background-color: #fdfdfd;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	margin-bottom: 1em;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	position: relative;
-	padding: .2em;
-	-webkit-border-radius: 0.3em;
-	-moz-border-radius: 0.3em;
-	-ms-border-radius: 0.3em;
-	-o-border-radius: 0.3em;
-	border-radius: 0.3em;
-	color: #c92c2c;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	display: inline;
-	white-space: normal;
-}
-
-pre[class*="language-"]:before,
-pre[class*="language-"]:after {
-	content: '';
-	z-index: -2;
-	display: block;
-	position: absolute;
-	bottom: 0.75em;
-	left: 0.18em;
-	width: 40%;
-	height: 20%;
-	max-height: 13em;
-	-webkit-box-shadow: 0px 13px 8px #979797;
-	-moz-box-shadow: 0px 13px 8px #979797;
-	box-shadow: 0px 13px 8px #979797;
-	-webkit-transform: rotate(-2deg);
-	-moz-transform: rotate(-2deg);
-	-ms-transform: rotate(-2deg);
-	-o-transform: rotate(-2deg);
-	transform: rotate(-2deg);
-}
-
-:not(pre) > code[class*="language-"]:after,
-pre[class*="language-"]:after {
-	right: 0.75em;
-	left: auto;
-	-webkit-transform: rotate(2deg);
-	-moz-transform: rotate(2deg);
-	-ms-transform: rotate(2deg);
-	-o-transform: rotate(2deg);
-	transform: rotate(2deg);
-}
-
-.token.comment,
-.token.block-comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-	color: #7D8B99;
-}
-
-.token.punctuation {
-	color: #5F6364;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.function-name,
-.token.constant,
-.token.symbol,
-.token.deleted {
-	color: #c92c2c;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.function,
-.token.builtin,
-.token.inserted {
-	color: #2f9c0a;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.token.variable {
-	color: #a67f59;
-	background: rgba(255, 255, 255, 0.5);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword,
-.token.class-name {
-	color: #1990b8;
-}
-
-.token.regex,
-.token.important {
-	color: #e90;
-}
-
-.language-css .token.string,
-.style .token.string {
-	color: #a67f59;
-	background: rgba(255, 255, 255, 0.5);
-}
-
-.token.important {
-	font-weight: normal;
-}
-
-.token.bold {
-	font-weight: bold;
-}
-.token.italic {
-	font-style: italic;
-}
-
-.token.entity {
-	cursor: help;
-}
-
-.namespace {
-	opacity: .7;
-}
-
-@media screen and (max-width: 767px) {
-	pre[class*="language-"]:before,
-	pre[class*="language-"]:after {
-		bottom: 14px;
-		-webkit-box-shadow: none;
-		-moz-box-shadow: none;
-		box-shadow: none;
-	}
-
-}
-
-/* Plugin styles */
-.token.tab:not(:empty):before,
-.token.cr:before,
-.token.lf:before {
-	color: #e0d7d1;
-}
-
-/* Plugin styles: Line Numbers */
-pre[class*="language-"].line-numbers {
-	padding-left: 0;
-}
-
-pre[class*="language-"].line-numbers code {
-	padding-left: 3.8em;
-}
-
-pre[class*="language-"].line-numbers .line-numbers-rows {
-	left: 0;
-}
-
-/* Plugin styles: Line Highlight */
-pre[class*="language-"][data-line] {
-	padding-top: 0;
-	padding-bottom: 0;
-	padding-left: 0;
-}
-pre[data-line] code {
-	position: relative;
-	padding-left: 4em;
-}
-pre .line-highlight {
-	margin-top: 0;
-}
-</style>
-
-<style type="text/css">
-pre.line-numbers {
-	position: relative;
-	padding-left: 3.8em;
-	counter-reset: linenumber;
-}
-
-pre.line-numbers > code {
-	position: relative;
-}
-
-.line-numbers .line-numbers-rows {
-	position: absolute;
-	pointer-events: none;
-	top: 0;
-	font-size: 100%;
-	left: -3.8em;
-	width: 3em; /* works for line-numbers below 1000 lines */
-	letter-spacing: -1px;
-	border-right: 1px solid #999;
-
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-
-}
-
-	.line-numbers-rows > span {
-		pointer-events: none;
-		display: block;
-		counter-increment: linenumber;
-	}
-
-		.line-numbers-rows > span:before {
-			content: counter(linenumber);
-			color: #999;
-			display: block;
-			padding-right: 0.8em;
-			text-align: right;
-		}
-</style>
-
-
+<link rel="stylesheet" type="text/css" href="Public/index/css/public.css">
+<link rel="stylesheet" type="text/css" href="Public/index/css/style.css">
+<script type="text/javascript" src="Public/index/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="Public/index/js/style.js"></script>
+<script type="text/javascript" src="Public/index/js/m_pullList.js"></script>
+<script type="text/javascript" src="Public/index/js/iepng.js"></script>
+<script src="Public/index/artDialog/artDialog.source.js?skin=default"></script>
+<script src="Public/index/artDialog/plugins/iframeTools.source.js"></script>
+<script type="text/javascript">
+    DD_belatedPNG.fix('div,ul,img,li,input,span,b,h1,h2,h3,h4,a,i,em');
+</script>
+<title>125网络营销培训-SEO培训-SEM培训-新媒体互动营销</title>
+<meta name="keywords" id="keywords" content="125网络营销实战培训，SEO培训，SEM培训，SEO培训学校">
+<meta name="description" id="description" content="<125网络营销高端培训-专业网络营销培训机构>打破传统教学理念，独家首创"全情景工作”培训模式，业内最长培训课时，最低价格体系。集团总部资源，百家联盟企业，125培训，全程实战教学模式，名企大咖+实战精英+科研课程，学网络营销，首选125网络营销高端培训">
 </head>
-
 <body>
-
-<h1 id="toc_0">这是我的网站</h1>
-
-<h2 id="toc_1">以下是链接</h2>
-
-<p><a href="https://www.baidu.com">百度</a></p>
-
-<h2 id="toc_2">这个是图片</h2>
-
-<p><img src="http://g.hiphotos.baidu.com/image/h%3D200/sign=74504760b77eca800d053ee7a1229712/8cb1cb13495409231b15823d9558d109b3de4971.jpg" alt=""></p>
-
-
-
+<div class="seo-index">
+	<div class="top">
+		<div class="header">
+	<div class="header-cen">
+		<div class="header-cen-left">
+			<div class="switch-left clearfix">
+				欢迎来到<a href="index.html">125培训，专注网络营销高端培训！</a>
+				<i class="Split_line" ></i>				
+			</div>
+			<div class="switch-right">
+				<span>旗下网站</span>
+				<i class="header-triangle-line"></i>
+				<ul class="switch-right-list">
+					<li class=""><a href="http://www.eduego.com" target="_blank" title="在职研究生">在职研究生</a></li>
+					<li class=""><a href="http://www.eduour.com" target="_blank" title="在职研之家">在职研之家</a></li>
+					<li class=""><a href="http://www.125visa.com" target="_blank" title="125签证">125签证</a></li>
+					<li class=""><a href="http://www.125edu.com" target="_blank" title="125教育">125教育</a></li>
+					
+				</ul>								
+			</div>
+		</div>
+		<div class="header-cen-right ">
+			<div class="header-login">
+				<span>
+					<a href="index.html" class="switch-text margin-r">&nbsp;登录&nbsp;</a>
+					<a href="index.html" class="switch-text switch-text-right">&nbsp;注册&nbsp;</a>
+					<i class="Split_line"></i>					
+				</span>
+			</div>
+			<div class="header-apply">
+				<span class="width103">
+					<a href="index.html" class="click">
+					更多应用
+					<i class="header-triangle-line switch-text-right"></i></a>
+					<i class="Split_line"></i>					
+				</span>
+				<!--<ul class="header-list">
+					<li class="">触屏版</li>
+					<li>官方微信</li>
+					<li>新浪微博</li>
+					<li>腾讯微博</li>
+					<li class="border-top">在职研究生</li>
+					<li>签证网</li>
+				</ul>-->
+			</div>
+			<div class="header-serve">
+				<span class="width103">
+					<a href="index.html" class="click">
+					客户服务
+					<i class="header-triangle-line switch-text-right"></i></a>				
+				</span>
+				<ul class="header-list">
+					<li><a href="http://wpa.qq.com/msgrd?v=3&uin=2037180232&site=qq&menu=yes" target="_blank">在线客服</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+		<div class="nav">
+			<div class="nav-main center-main clearfix">
+				<div class="nav-phone">
+					<img src="Public/index/image/seo-phone.png">
+				</div>
+				<div class="ceo-logo">
+					<a href="index.html"><img src="Public/index/image/seo-logo.png"></a>
+				</div>
+				<div class="nav-list">
+					<ul class="clearfix">
+						<li class="cur"><a href="index.html">首页</a></li>
+						<li  ><a href="about.html">关于我们</a></li>
+						<li ><a href="course.html">课程介绍</a></li>
+						<li ><a href="teacher.html">师资阵容</a></li>
+						<li ><a href="question/15_p1/index.html">常见问题</a></li>
+						<li ><a href="test.html">入学测试</a></li>
+						<li ><a href="contact.html">联系我们</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="height10"></div>
 <script type="text/javascript">
-var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+function dialog_min(caozuo){  //打开新窗口
+			//var aValue = document.getElementById('aInput').value;
+			//art.dialog.data('aValue', aValue);// 存储数据
+			var path = 'http://www.125peixun.com/Home/Home/Baoming/open/caozuo/'+caozuo;
+			art.dialog.open(path, {
+				id: 'AAA',
+				width:767,
+				height:640,
+				lock: true,
+				close: function () {
+					var win = art.dialog.open.origin;//来源页面
+					win.location.reload();
+				}
+			}, false);
+		}
 </script>
+	<div class="main center-main clearfix">
+		<div class="main-top clearfix">
+			<div class="banner">
+				<div class="ban-left">
+					<span class="til">独家培训优势</span>
+					<ul>
+						<li  class="ban-run cur"><a href="index.html">01. 全程实战教学模式</a></li>
+						<li  class="ban-run"><a href="index.html">02. 线上直观运营网站</a></li>
+						<li  class="ban-run"><a href="index.html">03. 1VS5实战项目PK</a></li>
+						<li  class="ban-run"><a href="index.html">04. 1+3高端辅导体系</a></li>
+						<li  class="ban-run"><a href="index.html">05. 名企大咖实战教学</a></li>
+						<li  class="ban-run"><a href="index.html">06. 高端小班全程面授</a></li>
+						<li  class="ban-run"><a href="index.html">07. 私人管家全程跟班</a></li>
+						<li  class="ban-run"><a href="index.html">08. 签订协议推荐就业</a></li>
+						<li  class="ban-run"><a href="index.html">09. 不拿高薪全额退费</a></li>
+						<li  class="ban-run border-none" name="0"><a href="index.html">10. 0 息分期付款上课</a></li>
+					</ul>
+				</div>
+				<div class="ban-right">
+					<ul>
+						<li class="cur"><a href="index.html"><img src="Public/index/image/banner1.jpg" height="450" width="760" alt=""></a></li>
+						<li><a href="index.html"><img src="Public/index/image/banner2.jpg" height="450" width="760" alt=""></a></li>
+						<li><a href="index.html"><img src="Public/index/image/banner3.jpg" height="450" width="760" alt=""></a></li>
+						<li><a href="index.html"><img src="Public/index/image/banner4.jpg" height="450" width="760" alt=""></a></li>
+						<li><a href="index.html"><img src="Public/index/image/banner5.jpg" height="450" width="760" alt=""></a></li>
+						<li><a href="index.html"><img src="Public/index/image/banner6.jpg" height="450" width="760" alt=""></a></li>
+						<li><a href="index.html"><img src="Public/index/image/banner7.jpg" height="450" width="760" alt=""></a></li>
+						<li><a href="index.html"><img src="Public/index/image/banner8.jpg" height="450" width="760" alt=""></a></li>
+						<li><a href="index.html"><img src="Public/index/image/banner9.jpg" height="450" width="760" alt=""></a></li>
+						<li><a href="index.html"><img src="Public/index/image/banner10.jpg" height="450" width="760" alt=""></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="main-top-right">
+				<div class="index-test">
+					<span class="test-top">这个课程，不是谁想来就能来</span>
+					<form action="index.html" id="post_xx" method="post">
+						<div class="test-bot">
+							<input type="text" class="phone" value="请输入手机号码" onFocus="javascript:if(this.value=='请输入手机号码'){this.value='';this.style.color='#000';this.style.fontWeight='bold';this.style.fontSize='14px';};" onBlur="javascript:if(this.value==''){this.value='请输入手机号码';this.style.color='#909191';this.style.fontWeight='normal';this.style.fontSize='12px';};" name="mobile" id="mobile">
+							<span class=clearfix>
+								<input type="text" name="code" id="code" class="verify" value="请输入验证码" onFocus="javascript:if(this.value=='请输入验证码'){this.value='';this.style.color='#000';this.style.fontWeight='bold';this.style.fontSize='14px';};" onBlur="javascript:if(this.value==''){this.value='请输入验证码';this.style.color='#909191';this.style.fontWeight='normal';this.style.fontSize='12px';};">
+								<input type="button" onclick="checkform()" value="获取验证码" id="GetVerify" class="verify-btn">
+							</span>
+							<a href="javascript:;"  onclick="codesubmit()" class="test-in"><input type="button" value="免费入学测试" id="submit"  disabled="disabled"></a>
+						</div>
+					</form>
+				</div>
 
-<script type="text/javascript">
-!function(){"undefined"!=typeof self&&self.Prism&&self.document&&Prism.hooks.add("complete",function(e){if(e.code){var t=e.element.parentNode,s=/\s*\bline-numbers\b\s*/;if(t&&/pre/i.test(t.nodeName)&&(s.test(t.className)||s.test(e.element.className))&&!e.element.querySelector(".line-numbers-rows")){s.test(e.element.className)&&(e.element.className=e.element.className.replace(s,"")),s.test(t.className)||(t.className+=" line-numbers");var n,a=e.code.match(/\n(?!$)/g),l=a?a.length+1:1,m=new Array(l+1);m=m.join("<span></span>"),n=document.createElement("span"),n.className="line-numbers-rows",n.innerHTML=m,t.hasAttribute("data-start")&&(t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)),e.element.appendChild(n)}}})}();
+				<div class="height10"></div>
+				<div class="index-listen">
+				<!--首页碎片-->
+				<div class="listen-top">
+    <div class="new-notion">
+        最新公告
+    </div>
+    <p class="notion-til">
+        高级实战网络营销培训
+    </p>
+    <div class="notion-number clearfix">
+        <span class="num-left"><p class="left-top">
+            <em>18</em>人
+        </p>
+        <p class="left-icon">
+            已招
+        </p></span><span class="num-right"><p class="right-top">
+            <em>12</em>人
+        </p>
+        <p class="right-icon">
+            仅剩
+        </p></span>
+    </div>
+</div>
+					<div class="listen-bot">
+						<a onClick="dialog_min('shiting')" class="bot-one">申请试听</a>
+						<a onClick="dialog_min('baoming')">迅速占座</a>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="height10"></div>
+		<div class="main-con">
+			<div class="high-tech">
+				<div class="high-til">
+					<p class="high-til-text">125"六部曲"<em>高薪保障</em></p>
+					<span>High Tech Support</span>
+				</div>
+				<p class="high-text">125网络营销高端培训，打破传统教学理念，独家首创"全情景工作”培训模式，业内最长培训课时，最低价格体系。集团总部资源，百家联盟企业，125培训，6年行业蛰伏，只为一朝雄飞，名企大咖+实战精英+科研课程，全新辅导体系震撼问世！在这里，我们绝不让学员为后悔买单！</p>
+<div class="step-list">
+<ul class="clearfix">
+<li><a href="test.html" class="tech-icon01 tech-icon" title="免费入学测试"></a><span><a href="test.html" title="免费入学测试">　免费　入学测试</span></a></li>
+<li><a href="course.html" class="tech-icon02 tech-icon" title="全程学习规划"></a><span><a href="course.html" title="全程学习规划">　全程　学习规划</span></a></li>
+<li><a href="teacher.html" class="tech-icon03 tech-icon" title="大咖实战教学"></a><span><a href="teacher.html" title="大咖实战教学">　大咖　实战教学</span></a></li>
+<li><a href="course.html" class="tech-icon04 tech-icon" title="高端小班面授"></a><span><a href="course.html" title="高端小班面授">　高端　小班面授</span></a></li>
+<li><a href="question/20_p1/index.html" class="tech-icon05 tech-icon" title="全程推荐就业"></a><span><a href="question/20_p1/index.html" title="全程推荐就业">　全程　推荐就业</span></a></li>
+<li class="margin0"><a href="question/18_p1/index.html" class="tech-icon06 tech-icon" title="0息分期付款"></a><span><a href="question/18_p1/index.html" title="0息分期付款">　0 息　分期付款</span></a></li>
+</ul>
+</div>
+</div>
+<div class="height10"></div>
+<div class="course">
+<div class="course-list">
+<div class="course-til">
+<p class="course-til-text">课程中心</p>
+<span>Course Center</span>
+</div>
+<div class="course-list-con clearfix">
+<div class="website course-list-div">
+<a href="course.html"><img src="Public/index/image/muk01.jpg"></a>
+<div class="course-con">
+<span class="course-con-til">网站建设</span>
+<ul>
+<li><a href="index.html">营销型网站概述</a></li>
+<li><a href="index.html">营销型网站建设</a></li>
+<li><a href="index.html">网站设置及修改</a></li>
+<li><a href="index.html">网站上传及安装</a></li>
+<li><a href="index.html">网站制作HTML+CSS</a></li>
+</ul>
+<span class="course-btn"><a href="course.html">详情介绍</a><a href="javascript:;"onclick="test();">在线咨询</a></span>
+</div>
+</div>
+<div class="optimize course-list-div">
+<a href="course.html"><img src="Public/index/image/muk02.jpg"></a>
+<div class="course-con">
+<span class="course-con-til">SEO网站优化</span>
+<ul>
+<li><a href="index.html">SEO理论</a></li>
+<li><a href="index.html">SEO关键词、代码优化</a></li>
+<li><a href="index.html">SEO内容、外链优化</a></li>
+<li><a href="index.html">SEO结构、域名空间优化</a></li>
+<li><a href="index.html">SEO诊断与分析</a></li>
+</ul>
+<span class="course-btn"><a href="course.html">详情介绍</a><a href="javascript:;"onclick="test();">在线咨询</a></span>
+</div>
+</div>
+<div class="interact course-list-div">
+<a href="course.html"><img src="Public/index/image/muk03.jpg"></a>
+<div class="course-con">
+<span class="course-con-til">新媒体互动营销</span>
+<ul>
+<li><a href="index.html">微信微博营销</a></li>
+<li><a href="index.html">QQ群邮件营销</a></li>
+<li><a href="index.html">博客论坛营销</a></li>
+<li><a href="index.html">问答软文营销</a></li>
+<li><a href="index.html">自媒体、SNS营销</a></li>
+</ul>
+<span class="course-btn"><a href="course.html">详情介绍</a><a href="javascript:;"onclick="test();">在线咨询</a></span>
+</div>
+</div>
+<div class="generalize course-list-div">
+<a href="course.html"><img src="Public/index/image/muk04.jpg"></a>
+<div class="course-con">
+<span class="course-con-til">SEM竞价推广</span>
+<ul>
+<li><a href="index.html">百度搜索推广</a></li>
+<li><a href="index.html">百度网盟推广</a></li>
+<li><a href="index.html">百度移动推广</a></li>
+<li><a href="index.html">百度商业产品</a></li>
+<li><a href="index.html">其他搜索引擎推广</a></li>
+</ul>
+<span class="course-btn"><a href="course.html">详情介绍</a><a href="javascript:;"onclick="test();">在线咨询</a></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="height10"></div>
+<div class="teach">
+<div class="teach-til">
+<p class="teach-til-text">教研团队</p>
+<span>Teaching And Research Team</span>
+</div>
+<div class="teach-list" id="tjxu_pic1">
+<ul class="clearfix">
+<li>
+<a href="teacher.html"><img src="Public/index/image/teacher1.jpg" height="228" width="248" alt=""></a>
+<span><a href="teacher.html" class="teach-name">蔡国强</a></span>
+<p><a href="teacher.html">125培训网络营销SEO研究院院长</a></p>
+<a href="teacher.html" class="teach-btn">查看</a>
+</li>
+<li>
+<a href="teacher.html"><img src="Public/index/image/teacher2.jpg" height="228" width="248" alt=""></a>
+<span><a href="teacher.html" class="teach-name">第鹏程</a></span>
+<p><a href="teacher.html">125培训网络营销新媒体研究院院长</a></p>
+<a href="teacher.html" class="teach-btn">查看</a>
+</li>
+<li>
+<a href="teacher.html"><img src="Public/index/image/teacher3.jpg" height="228" width="248" alt=""></a>
+<span><a href="teacher.html" class="teach-name">韩志娟</a></span>
+<p><a href="teacher.html">125培训网络营销SEM研究院院长</a></p>
+<a href="teacher.html" class="teach-btn">查看</a>
+</li>
+<li>
+<a href="teacher.html"><img src="Public/index/image/teacher4.jpg" height="228" width="248" alt=""></a>
+<span><a href="teacher.html" class="teach-name">刘艳</a></span>
+<p><a href="teacher.html">125培训网络营销SEM金牌讲师 </a></p>
+<a href="teacher.html" class="teach-btn">查看</a>
+</li>
+</ul>
+</div>
+<div class="teach-ban-btn clearfix">
+<span class="next" id="anLeft1"></span>
+<span class="prev" id="anRight1"></span>
+</div>
+</div>
+</div>
+</div>
+<script>
+	function checkform() {
+		var mobile = $("#mobile").val();
+		var reg = /^1[3|4|5|8]\d{9}$/;
+		if(!reg.test(mobile)) {
+			alert('请输入正确的手机号码');
+			$("#mobile").focus();
+			return false;
+		}
+		get_verify();
+	}
+	function get_verify() {
+		var mobile = $("#mobile").val();	
+		$.get("http://www.125peixun.com/Home/Home/Index/sendmidel",{mobile:mobile}, function(data){
+			if(data=="验证码已经发送到你手机") {
+				alert('操作过于频繁,请稍后在试！');
+			}else{
+				alert('验证码已发送成功，请接收！');
+				$('#GetVerify').attr('disabled',true);
+				$('#submit').attr("disabled",false);
+				$('#submit').css("cursor","pointer");
+				times = 120;
+				isinerval = setInterval("CountDown()", 1000);
+				$('#submit').hover(function(){
+					$(this).addClass('cur');
+				},function(){
+					$(this).removeClass('cur');
+				});
+			}
+		});			
+	}
+	function codesubmit(){
+		var mobile = $("#mobile").val();
+		var code = $("#code").val();
+		$.post("http://www.125peixun.com/Home/Home/Index/code",{mobile:mobile,code:code}, function(data){
+			if(data=='ok'){
+				window.location.href ="http://www.125peixun.com/test.html/mobile/"+mobile;
+			}else{
+				alert('验证码输入错误！');
+			}
+		});
+	}
+	function CountDown() {
+			if (times < 1) {
+			  $('#GetVerify').attr('disabled',false);
+			  $("#GetVerify").attr("value","获取验证码");
+			  clearInterval(isinerval);
+			  return;
+			}
+			$("#GetVerify").attr("value",times+"秒后重获");
+			times--;
+	 }
 </script>
-
-<script type="text/x-mathjax-config">
-if (typeof MathJaxListener !== 'undefined') {
-  MathJax.Hub.Register.StartupHook('End', function () {
-    MathJaxListener.invokeCallbackForKey_('End');
+<div class="height10"></div>
+<div class="bottom">
+<div class="xf">
+<div class="sides-con-new">
+<ul>
+<a href="javascript:;"onclick="test();"><li class="qqzx web-bj"></li></a>
+<li class="phone web-bj"></li>
+<li class="fenxiang web-bj"></li>
+<li class="pendant-top web-bj"></li>
+</ul>
+<div class="img-dhzx">
+<strong>010-5712-6125</strong>
+</div>
+<div class="img-qqzx">
+<div class="qq-btn">
+<a href="javascript:;"onclick="test();">QQ咨询</a>
+<span>QQ:2037180232</span>
+</div>
+</div>
+<script>
+	function test(){
+		var iWidth=800; //弹出窗口的宽度;
+		var iHeight=600; //弹出窗口的高度;
+		var iTop =  Math.round((window.screen.height-iHeight)/2); //获得窗口的垂直位置;innerHeight='+iHeight+'
+		var iLeft = Math.round((window.screen.width-iWidth)/2); //获得窗口的水平位置;
+		window.open("http://wpa.qq.com/msgrd?v="+3+"&uin="+2037180232+"&site="+'qq'+"&menu="+'yes'+"","yourtitle","height="+iHeight+",width="+iWidth+",resizable=yes,scrollbars=yes,status=no,menubar=no,location=no,top="+iTop+" left="+iLeft);
+	}
+	</script>
+<div class="img-ljfx">
+<div class="bdsharebuttonbox gb-fx"><a href="index.html#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="index.html#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="index.html#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="index.html#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="index.html#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="index.html#" class="bds_weixin" data-cmd="weixin"></a><a title="分享到QQ好友" href="index.html#" class="bds_sqq" data-cmd="sqq"></a><a title="分享到百度新首页" href="index.html#" class="bds_bdhome" data-cmd="bdhome"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+</div>
+</div>
+<script>
+  $(function(){
+    $(window).scroll(function(){
+        if($(window).scrollTop()>0){
+          $('.pendant-top').css('visibility','visible');
+        }else{
+          $('.pendant-top').css('visibility','hidden');
+        }
+    });
+    $('.pendant-top').click(function(){
+      $('body,html').animate({scrollTop:0},500);
+      return false;
+    });
   });
-}
+  $(function(){
+    $('.sides-con-new ul li').hover(function(){
+      $(this).addClass('cur');
+    },function(){
+      $(this).removeClass('cur');
+    });
+    $('.sides-con-new .zzzx a').hover(function(){
+      $(this).html('在线咨询');
+    },function(){
+      $(this).html('');
+    });
+    $('.sides-con-new .phone').hover(function(){
+      $(this).html('电话咨询');
+      $('.sides-con-new .img-dhzx').css('display','block');
+    },function(){
+      $(this).html('');
+      $('.sides-con-new .img-dhzx').css('display','none');
+    });
+    $('.sides-con-new .qqzx').hover(function(){
+      $(this).html('Q Q咨询');
+      $('.sides-con-new .img-qqzx').css('display','block');
+    },function(){
+      $(this).html('');
+      $('.sides-con-new .img-qqzx').css('display','none');
+    });
+    $('.sides-con-new .fenxiang').hover(function(){
+      $(this).html('立即分享');
+      $('.sides-con-new .img-ljfx').css('display','block');
+    },function(){
+      $(this).html('');
+      $('.sides-con-new .img-ljfx').css('display','none');
+    });
+    $('.sides-con-new .pendant-top').hover(function(){
+      $(this).html('返回顶部');
+    },function(){
+      $(this).html('');
+    });
+    $('.img-dhzx').hover(function(){
+      $(this).css('display','block');
+    },function(){
+      $(this).css('display','none');
+    });
+    $('.img-qqzx').hover(function(){
+      $(this).css('display','block');
+    },function(){
+      $(this).css('display','none');
+    });
+    $('.img-ljfx').hover(function(){
+      $(this).css('display','block');
+    },function(){
+      $(this).css('display','none');
+    });
+  });
 </script>
-
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
+<div class="contact">
+<div class="contact-con center-main clearfix">
+<div class="contact-left clearfix">
+<span class="contact-phone"></span>
+<span>
+<p class="one">咨询电话(8:00-24:00)</p>
+<p class="two">010-57126125</p>
+</span>
+</div>
+<div class="contact-center clearfix">
+<span class="contact-refer"></span>
+<span>
+<p class="one">在线客服(8:00-24:00)</p>
+<p class="two"><a href="javascript:;"onclick="test();">点击咨询</a></p>
+</span>
+</div>
+<div class="contact-right clearfix">
+<span class="contact-code"><img src="Public/index/image/bottom-code.png" width="58px" height="58px"></span>
+<span>
+<p class="one">125培训官方公众号</p>
+<p class="two"><em>扫描二维码，</em>免费入学测试</p>
+</span>
+</div>
+</div>
+</div>
+<div class="footer">
+<div class="footer-con center-main">
+<p class="foottor-top-text"><a href="about.html">关于我们</a>|<a href="contact.html">联系我们</a>|<a href="contact.html">乘车路线</a>|<a href="test.html">入学测试</a>|<a href="question/15_p1/index.html">常见问题</a></p>
+<p class="foottor-bot-text">京ICP备13048554号-1 Copyright©2014-2016 北京一二五科技有限公司 All Rights Reserverd</p>
+<span><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258695288'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1258695288%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></span>
+</div>
+</div>
+</div>
 </body>
-
 </html>
